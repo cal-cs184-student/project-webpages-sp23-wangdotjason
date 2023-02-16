@@ -2,10 +2,11 @@
 	<head>
 	</head>
 	<body>
-		Project 1 here
 		1.I rasterized my triangles by sampling points in the center of pixels and checking if the sample point was inside of a triangle. If it was, 
 		then I colored that pixel in the frame_buffer. My algorithm is no worse than one that checks samples within the bounding box of a triangle 
-		because my algorithm does exactly that -- checks all samples within the bounding box of a triangle. 
+		because my algorithm does exactly that, I did not implement sample checking for scanning only the points within the edges of a triangle. 
+		
+		<img src="q1.jpg" alt="Italian Trulli">
 		
 		2. 
 Show png screenshots of basic/test4.svg with the default viewing parameters and sample rates
@@ -33,12 +34,30 @@ Show a png screenshot of svg/basic/test7.svg with default viewing parameters and
 		a vertex and the opposing edge. 
 		
 		5.
-		Explain pixel sampling in your own words and describe how you implemented it to perform texture mapping. Briefly discuss the two different pixel sampling methods, nearest and bilinear.
-Check out the svg files in the svg/texmap/ directory. Use the pixel inspector to find a good example of where bilinear sampling clearly defeats nearest sampling. Show and compare four png screenshots using nearest sampling at 1 sample per pixel, nearest sampling at 16 samples per pixel, bilinear sampling at 1 sample per pixel, and bilinear sampling at 16 samples per pixel.
+		Explain pixel sampling in your own words and describe how you implemented it to perform texture mapping. Briefly discuss the two different pixel 
+		sampling methods, nearest and bilinear.
+Check out the svg files in the svg/texmap/ directory. Use the pixel inspector to find a good example of where bilinear sampling clearly defeats nearest sampling. 
+		Show and compare four png screenshots using nearest sampling at 1 sample per pixel, nearest sampling at 16 samples per pixel, bilinear sampling at 1 sample per pixel, and bilinear sampling at 16 samples per pixel.
 Comment on the relative differences. Discuss when there will be a large difference between the two methods and why.
 		
+		Pixel sampling is where pixels on an objects/shape are mapped to pixels in a texture map. Nearest pixel sampling is where the pixel sampled is the 
+		closests pixel in the texture to the uv coordinate. Bilinear sampling is where the 4 pixels in the texture map around the uv coordinate 
+		are sampled and averaged out using linear interpolation. 
 		
-		6.
+		
+		6.Explain level sampling in your own words and describe how you implemented it for texture mapping.
+You can now adjust your sampling technique by selecting pixel sampling, level sampling, or the number of samples per pixel. 
+		Describe the tradeoffs between speed, memory usage, and antialiasing power between the three various techniques.
+Using a png file you find yourself, show us four versions of the image, using the combinations of L_ZERO and P_NEAREST, L_ZERO and 
+		P_LINEAR, L_NEAREST and P_NEAREST, as well as L_NEAREST and P_LINEAR.
+To use your own png, make a copy of one of the existing svg files in svg/texmap/ (or create your own modelled after one of the provided svg files). 
+		Then, near the top of the file, change the texture filename to point to your own png. From there, you can run ./draw and pass 
+		in that svg file to render it and then save a screenshot of your results.
+Note: Choose a png that showcases the different sampling effects well. You may also want to zoom in/out, use the pixel inspector, etc. to 
+		demonstrate the differences.
+		
+		Level sampling
+		
 		
 	</body>
 </html>
