@@ -18,7 +18,9 @@
 			to conduct the sampling. After populating the sample buffer, each NxN group of pixels, where NxN is the supersampling frequency, 
 			is averaged out and colored in the frame buffer. Supersampling is useful because it reduces the ammount of jaggies where a good portion of 
 			an object is within the viewing pixel, but does not pass through the sampling point. Essentially, supersampling is a heuristic for 
-			coloring pixels by area without doing all the computation required to accurately calcuate area. 
+			coloring pixels by area without doing all the computation required to accurately calcuate area. In the following images, the supersampled 
+			triangles have edges that have a smoother gradient. This is because at very steep angles, the 1x sampling is likely to miss the triangle area 
+			even though a large portion of the triangle is within the pixel.
 		</p>
 		<img src="q21x.png" alt="Italian Trulli">
 		<img src="q24x.png" alt="Italian Trulli">
@@ -43,7 +45,9 @@
 			sampled is the closests pixel in the texture to the uv coordinate. Bilinear sampling is where the 4 pixels in the texture map around 
 			the uv coordinate are sampled and averaged out using linear interpolation. I implemented nearest pixel sampling by rounding the uv 
 			coordinates and sampling the mipmap at the rounded coordinate. I implemented bilinear sampling by sampling the 4 nearest pixels using 
-			floor and ceil. I then took the sum of each of the 4 colors scaled by their distance to the sample point as the output color. 
+			floor and ceil. I then took the sum of each of the 4 colors scaled by their distance to the sample point as the output color. There are 
+			large differences between nearest and bilinear sampling at 1x1 sampling while there is litte difference at 16x16. This is because at 16x16, 
+			the difference between interpolated colors and nearest pixels is much smaller than at lower sampling frequencies. 
 		</p>
 		<img src="q51xnear.png" alt="Italian Trulli">
 		<img src="q51xbilin.png" alt="Italian Trulli">
