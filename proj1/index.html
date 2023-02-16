@@ -45,8 +45,10 @@
 			coordinates and sampling the mipmap at the rounded coordinate. I implemented bilinear sampling by sampling the 4 nearest pixels using 
 			floor and ceil. I then took the sum of each of the 4 colors scaled by their distance to the sample point as the output color. 
 		</p>
-		<img src="q4.png" alt="Italian Trulli">
-		<img src="q47.png" alt="Italian Trulli">
+		<img src="q51xnear.png" alt="Italian Trulli">
+		<img src="q51xbilin.png" alt="Italian Trulli">
+		<img src="q516xnear.png" alt="Italian Trulli">
+		<img src="q516xbilin.png" alt="Italian Trulli">
 		
 		<p>
 			6. Level sampling is where you conduct point sampling on different levels of texture mipmaps where each level of a mipmap is progressively 
@@ -58,10 +60,10 @@
 			Nearest is slower than zero level sampling, uses less memory, but is more antialiased. Linear level sampling is the slowest, uses more memory 
 			than linear level sampling as 2 levels are used to interpolate, but produces the best antialiasing. 
 		</p>
-		<img src="q4.png" alt="Italian Trulli">
-		<img src="q47.png" alt="Italian Trulli">
-		<img src="q4.png" alt="Italian Trulli">
-		<img src="q47.png" alt="Italian Trulli">
+		<img src="q6l0near.png" alt="Italian Trulli">
+		<img src="q6l0lin.png" alt="Italian Trulli">
+		<img src="q6linnear.png" alt="Italian Trulli">
+		<img src="q6linlin.png" alt="Italian Trulli">
 
 	</body>
 </html>
