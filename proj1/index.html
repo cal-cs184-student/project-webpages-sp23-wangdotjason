@@ -29,38 +29,39 @@
 		</p>
 		<img src="q3.png" alt="Italian Trulli">
 		
-		4.Explain barycentric coordinates in your own words and use an image to aid you in your explanation. 
-		One idea is to use a svg file that plots a single triangle with one red, one green, and one blue vertex, 
-		which should produce a smoothly blended color triangle.
-Show a png screenshot of svg/basic/test7.svg with default viewing parameters and sample rate 1. If you make any additional images with color gradients, include them.
-		Barycentric coordinates are coordinates used to describe points within a triangle where each coordinate is the relative distance between 
-		a vertex and the opposing edge. 
 		
-		5.
-		Explain pixel sampling in your own words and describe how you implemented it to perform texture mapping. Briefly discuss the two different pixel 
-		sampling methods, nearest and bilinear.
-Check out the svg files in the svg/texmap/ directory. Use the pixel inspector to find a good example of where bilinear sampling clearly defeats nearest sampling. 
-		Show and compare four png screenshots using nearest sampling at 1 sample per pixel, nearest sampling at 16 samples per pixel, bilinear sampling at 1 sample per pixel, and bilinear sampling at 16 samples per pixel.
-Comment on the relative differences. Discuss when there will be a large difference between the two methods and why.
+		<p>
+			4. Barycentric coordinates are coordinates used to describe points within a triangle where each coordinate is the relative distance between 
+			a vertex and the opposing edge. These coordinates are useful for interpolating colors, textures, and areas. For example, a triangle with a 
+			different color for each vertex can be rendered as a gradient. 
+		</p>
+		<img src="q4.png" alt="Italian Trulli">
+		<img src="q47.png" alt="Italian Trulli">
+
+		<p>
+			5. Pixel sampling is where pixels on an objects/shape are mapped to pixels in a texture map. Nearest pixel sampling is where the pixel 
+			sampled is the closests pixel in the texture to the uv coordinate. Bilinear sampling is where the 4 pixels in the texture map around 
+			the uv coordinate are sampled and averaged out using linear interpolation. I implemented nearest pixel sampling by rounding the uv 
+			coordinates and sampling the mipmap at the rounded coordinate. I implemented bilinear sampling by sampling the 4 nearest pixels using 
+			floor and ceil. I then took the sum of each of the 4 colors scaled by their distance to the sample point as the output color. 
+		</p>
+		<img src="q4.png" alt="Italian Trulli">
+		<img src="q47.png" alt="Italian Trulli">
 		
-		Pixel sampling is where pixels on an objects/shape are mapped to pixels in a texture map. Nearest pixel sampling is where the pixel sampled is the 
-		closests pixel in the texture to the uv coordinate. Bilinear sampling is where the 4 pixels in the texture map around the uv coordinate 
-		are sampled and averaged out using linear interpolation. 
-		
-		
-		6.Explain level sampling in your own words and describe how you implemented it for texture mapping.
-You can now adjust your sampling technique by selecting pixel sampling, level sampling, or the number of samples per pixel. 
-		Describe the tradeoffs between speed, memory usage, and antialiasing power between the three various techniques.
-Using a png file you find yourself, show us four versions of the image, using the combinations of L_ZERO and P_NEAREST, L_ZERO and 
-		P_LINEAR, L_NEAREST and P_NEAREST, as well as L_NEAREST and P_LINEAR.
-To use your own png, make a copy of one of the existing svg files in svg/texmap/ (or create your own modelled after one of the provided svg files). 
-		Then, near the top of the file, change the texture filename to point to your own png. From there, you can run ./draw and pass 
-		in that svg file to render it and then save a screenshot of your results.
-Note: Choose a png that showcases the different sampling effects well. You may also want to zoom in/out, use the pixel inspector, etc. to 
-		demonstrate the differences.
-		
-		Level sampling
-		
-		
+		<p>
+			6. Level sampling is where you conduct point sampling on different levels of texture mipmaps where each level of a mipmap is progressively 
+			lower resolution. This is useful because we can change the resolution of textures as objects get larger or smaller, saving computational 
+			resources. I calculated the true mipmap level by taking the log of the max of the derivates of the horizontal and vertical scaling. For 
+			zero level sampling, the mipmap texture of highest resolution is always used. For nearest level sampling, the nearest integer of the true 
+			level was used. And for bilinear, the weighted sum of the level above and below the true level was used. Zero level is the fastest as it does 
+			not need to compute any mipmap levels, uses the most memory as each texture is full resolution, and is the most aliased. 
+			Nearest is slower than zero level sampling, uses less memory, but is more antialiased. Linear level sampling is the slowest, uses more memory 
+			than linear level sampling as 2 levels are used to interpolate, but produces the best antialiasing. 
+		</p>
+		<img src="q4.png" alt="Italian Trulli">
+		<img src="q47.png" alt="Italian Trulli">
+		<img src="q4.png" alt="Italian Trulli">
+		<img src="q47.png" alt="Italian Trulli">
+
 	</body>
 </html>
