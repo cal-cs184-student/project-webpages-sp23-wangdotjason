@@ -3,31 +3,31 @@
 	</head>
 	<body>
 		<p>
-			1. I rasterized my triangles by sampling points in the center of pixels and checking if the sample point was inside of a triangle. <br>
-			If it was, then I colored that pixel in the frame_buffer. My algorithm is no worse than one that checks samples within the bounding <br>
-			box of a triangle because my algorithm does exactly that, I did not implement sample checking for scanning only the points within <br>
+			1. I rasterized my triangles by sampling points in the center of pixels and checking if the sample point was inside of a triangle. 
+			If it was, then I colored that pixel in the frame_buffer. My algorithm is no worse than one that checks samples within the bounding 
+			box of a triangle because my algorithm does exactly that, I did not implement sample checking for scanning only the points within 
 			the edges of a triangle. <br>
 		</p>
 		<img src="q1.png" alt="Italian Trulli">
-		<br>
+		<img src="q1ss.png" alt="Italian Trulli">
+
+		<p>
+			2. My supersampling algorithm scales the horizontal and vertical frequency of sampling and outputs to a sample buffer that is also scaled 
+			the appropriate amount. Vertices of triangles, points, and lines are also scaled accordingly. For example a point at (1,2) would be mapped to 
+			(4, 8) with 4x4 supersampling. This way I did not have to make many changes to my rasterization pipeline and could reuse code from part 1
+			to conduct the sampling. After populating the sample buffer, each NxN group of pixels, where NxN is the supersampling frequency, 
+			is averaged out and colored in the frame buffer. Supersampling is useful because it reduces the ammount of jaggies where a good portion of 
+			an object is within the viewing pixel, but does not pass through the sampling point. Essentially, supersampling is a heuristic for 
+			coloring pixels by area without doing all the computation required to accurately calcuate area. 
+		</p>
+		<img src="q21x.png" alt="Italian Trulli">
+		<img src="q24x.png" alt="Italian Trulli">
+		<img src="q216x.png" alt="Italian Trulli">
 		
-		2. 
-Show png screenshots of basic/test4.svg with the default viewing parameters and sample rates
-		1, 4, and 16 to compare them side-by-side. Position the pixel inspector over 
-		an area that showcases the effect dramatically; for example, a very skinny triangle corner. Explain why these results are observed.
-		
-		My supersampling algorithm scales the horizontal and vertical frequency of sampling and outputs to a sample buffer that is also scaled 
-		the appropriate amount. Vertices of triangles, points, and lines are also scaled accordingly. For example a point at (1,2) would be mapped to 
-		(4, 8) with 4x4 supersampling. This way I did not have to make many changes to my rasterization pipeline and could reuse code from part 1
-		to conduct the sampling. After populating the sample buffer, each NxN group of pixels, where NxN is the supersampling frequency, 
-		is averaged out and colored in the frame buffer. Supersampling is useful because it reduces the ammount of jaggies where a good portion of an object
-		is within the viewing pixel, but does not pass through the sampling point. Essentially, supersampling is a heuristic for coloring pixels by area 
-		without doing all the computation required to accurately calcuate area. 
-		
-		3.Create an updated version of svg/transforms/robot.svg with cubeman doing something more interesting, like waving or running. 
-		Feel free to change his colors or proportions to suit your creativity. Save your svg file as my_robot.svg in your docs/ 
-		directory and show a png screenshot of your rendered drawing in your write-up. Explain what you were trying to do with cubeman in words.
-		Cubeman wave hi! :) 
+		<p>
+			3. Cubeman waves hello! :) 
+		</p>
+		<img src="q3.png" alt="Italian Trulli">
 		
 		4.Explain barycentric coordinates in your own words and use an image to aid you in your explanation. 
 		One idea is to use a svg file that plots a single triangle with one red, one green, and one blue vertex, 
