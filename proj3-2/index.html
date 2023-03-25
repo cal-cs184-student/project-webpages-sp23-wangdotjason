@@ -70,40 +70,45 @@
         </b></p>
         <p>
             1. The walls, ceiling light, and reflection of the ceiling light on the 2 balls are rendered. However, the ceiling, ball surfaces, and shadows under the balls are not rendered. <br>
+            <br>
             2. The ceiling appears, shadows are no longer purely black, mirror reflections off the metal ball, and glass reflections off the glass ball are rendered. <br>
+            <br>
             3. The glass ball becomes transparent, refractions off the inside of the glass ball become visible, and light penetrates through the glass ball, illuminating the shadow under the ball <br>
+            <br>
             4. The underside of the glass ball is illuminated, the reflection of the glass ball on the metal ball becomes transparent, and refractions of the ceiling light appear on the blue wall. <br>
-            5. 
+            <br>
+            5. At this resolution I cannot distinguish any difference between this image and the previous one, although I know the reflections of the metal ball on the <br>
+            glass ball on the metal ball should start to appear<br>
+            <br>
             6. Difference between the previous image are not very discernable at this resolution, although the shadows under the metal ball seem a little bit brighter and there is glint on the top of the glass ball<br>
         </p>
-        <br>
+
         <p><b>
             Explain how these bounce numbers relate to the particular effects that appear. Make sure to include all screenshots.
         </b></p>
         <p>
             1. With a ray max depth of 1, only direct bounces into the viewpoint are rendered. This includes the walls, floor, and reflection off the balls. <br>
             The ceiling is not rendered because it is in the same plane as the light source so it is impossible for light to reach it in only a single bounce. <br>
-            
+            <br>
             2. With a max ray depth of 2, the ceiling and shadows becomes illuminated because light can bounce off objects back into the ceiling/shadow. For this same reason, the <br>
             direct reflection off both balls are rendered. The glass ball appears black because refractions inside the ball have to hit another side of the ball one more <br>
             time before they can escape. <br>
-
+            <br>
             3. With a max ray depth of 3, the glass ball becomes transparent because the refraction have entered the ball, exited the ball, and hit the environment/other ball. <br>
             For this same reason reason the shadow underneath the glass ball becomes illuminated as the light refracts twice through the ball, hitting the floor <br>
-
+            <br>
             4. With a max ray depth of 4, the underside of the glass ball is illuminated as the light that refracted through the ball and hit the ground bounced <br>
             back up into the underside of the glass ball. The reflection of the glass ball also becomes transparent for the same reason as the previous part, only <br>
             that the light had to be bounced off the metal ball first. <br>
-
+            <br>
             5. With a max ray depth of 5, there is not a significant difference because the magnitude of any ray that hits a non mirror surface is very low. <br>
             The only rays that persist after 5 bounces are those bounced between mirror surfaces, which account for only a couple rays at this resolution, <br>
             thus not making a huge impact on the final image <br>
-
+            <br>
             6. With a max ray depth of 100, there is once again not a huge difference between previous renders as the majority of rays have been nullified. The glints <br>
             on top of the glass ball appear as a result of indirect light reflecting off the top of the glass ball with a low probablity, which is why it does not <br>
             appear very distinctly on previous images. <br>
         </p>
-        <br>
 
 
         <h3 align="middle">Part 2. Microfacet Material</h3>
@@ -131,6 +136,12 @@
             alpha = .5
         </p>
         <br>
+        <p>
+            The alpha value represents the roughness of the material so in the first image when there's a low alpha value, the dragon is much glossier/specular, which causes more specularity in the image. <br>
+            As the alpha value increases, reflections off the dragon are more diffuse, creating a matte surface and a "cleaner" looking image because the light is more evenly dispersed into the environment. <br>
+            Furthermore, the shadows in the areas of the dragon not directly in the light become brighter as the diffusion of light illuminates those areas more brightly. <br>
+           
+        </p>
 
         <br>
         <p><b>
@@ -146,13 +157,17 @@
             importance sampling
         </p>
         <br>
+        <p>
+            Importance sampling directs the light samples to cover our area of interest, which in this case is the bunny. Cosine hemisphere sampling sends samples in a hemisphere all throughot the environment, with on a small fraction of them <br>
+            hitting the bunny. This is why for the same number of light samples, the bunny rendered with importance sampling looks more complete. With an infinite number of light samples, both methods would produce identical results. 
+        </p>
         <br>
         <p><b>
             Show at least one image with some other conductor material, replacing `eta` and `k`. Note that you should look up values for real data rather than modifying them arbitrarily. Tell us what kind of material your parameters correspond to. 
         </b></p>
         <img src="images/part2_bunny_ag.png" alt="Silver bunny!">
         <p>
-            Silver bunny!
+            Silver bunny! These parameters determine the polarization of different wavelength of light, changing the reflectance as a function of viewing angle. 
         </p>
         <br>
         <br>
