@@ -34,10 +34,14 @@
         <p>
             ray depth 1
         </p>
+        <br>
+
         <img src="images/part1_ray_depth_2.png" alt="ray depth 2">
         <p>
             ray depth 2
         </p>
+        <br>
+
         <img src="images/part1_ray_depth_3.png" alt="ray depth 3">
         <p>
             ray depth 3
@@ -46,28 +50,58 @@
         <p>
             ray depth 4
         </p>
+        <br>
+
         <img src="images/part1_ray_depth_5.png" alt="ray depth 5">
         <p>
             ray depth 5
         </p>
+        <br>
+
         <img src="images/part1_ray_depth_100.png" alt="ray depth 100">
         <p>
             ray depth 100
         </p>
+        <br>
 
         <br>
         <p><b>
             Point out the new multibounce effects that appear in each image. 
         </b></p>
         <p>
-            Your response goes here.
+            1. The walls, ceiling light, and reflection of the ceiling light on the 2 balls are rendered. However, the ceiling, ball surfaces, and shadows under the balls are not rendered. <br>
+            2. The ceiling appears, shadows are no longer purely black, mirror reflections off the metal ball, and glass reflections off the glass ball are rendered. <br>
+            3. The glass ball becomes transparent, refractions off the inside of the glass ball become visible, and light penetrates through the glass ball, illuminating the shadow under the ball <br>
+            4. The underside of the glass ball is illuminated, the reflection of the glass ball on the metal ball becomes transparent, and refractions of the ceiling light appear on the blue wall. <br>
+            5. 
+            6. Difference between the previous image are not very discernable at this resolution, although the shadows under the metal ball seem a little bit brighter and there is glint on the top of the glass ball<br>
         </p>
         <br>
         <p><b>
             Explain how these bounce numbers relate to the particular effects that appear. Make sure to include all screenshots.
         </b></p>
         <p>
-            Your response goes here.
+            1. With a ray max depth of 1, only direct bounces into the viewpoint are rendered. This includes the walls, floor, and reflection off the balls. <br>
+            The ceiling is not rendered because it is in the same plane as the light source so it is impossible for light to reach it in only a single bounce. <br>
+            
+            2. With a max ray depth of 2, the ceiling and shadows becomes illuminated because light can bounce off objects back into the ceiling/shadow. For this same reason, the <br>
+            direct reflection off both balls are rendered. The glass ball appears black because refractions inside the ball have to hit another side of the ball one more <br>
+            time before they can escape. <br>
+
+            3. With a max ray depth of 3, the glass ball becomes transparent because the refraction have entered the ball, exited the ball, and hit the environment/other ball. <br>
+            For this same reason reason the shadow underneath the glass ball becomes illuminated as the light refracts twice through the ball, hitting the floor <br>
+
+            4. With a max ray depth of 4, the underside of the glass ball is illuminated as the light that refracted through the ball and hit the ground bounced <br>
+            back up into the underside of the glass ball. The reflection of the glass ball also becomes transparent for the same reason as the previous part, only <br>
+            that the light had to be bounced off the metal ball first. <br>
+
+            5. With a max ray depth of 5, there is not a significant difference because the magnitude of any ray that hits a non mirror surface is very low. <br>
+            The only rays that persist after 5 bounces are those bounced between mirror surfaces, which account for only a couple rays at this resolution, <br>
+            thus not making a huge impact on the final image <br>
+
+            6. With a max ray depth of 100, there is once again not a huge difference between previous renders as the majority of rays have been nullified. The glints <br>
+            on top of the glass ball appear as a result of indirect light reflecting off the top of the glass ball with a low probablity, which is why it does not <br>
+            appear very distinctly on previous images. <br>
         </p>
         <br>
 
